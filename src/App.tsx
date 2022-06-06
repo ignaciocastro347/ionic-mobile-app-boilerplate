@@ -1,19 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact,
-} from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
-import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
+import { IonApp, IonRouterOutlet, setupIonicReact } from "@ionic/react";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -33,23 +18,32 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+
+/* Theme variables */
+import "./theme/variables.css";
+/* Tailwind styles */
+import "./theme/tailwind.css";
+import { IonReactRouter } from "@ionic/react-router";
+import { Redirect, Route } from "react-router";
+import Login from "./pages/Login";
 import MainLayout from "./theme/MainLayout";
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/">
-          <MainLayout />
-        </Route>
-        <Route exact path="/login">
-          {/* <Login /> */}
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const isAuthed = false;
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Redirect path="/" to={isAuthed ? "/dashboard" : "/login"} exact />
+          <Route path="/dashboard" render={() => <MainLayout />} />
+          <Route path="/login" component={Login} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
