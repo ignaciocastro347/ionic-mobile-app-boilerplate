@@ -8,31 +8,37 @@ import {
 } from "@ionic/react";
 import { ellipse, square, triangle } from "ionicons/icons";
 import { Redirect, Route } from "react-router";
-import Tab1 from "../pages/Tab1";
-import Tab2 from "../pages/Tab2";
-import Tab3 from "../pages/Tab3";
+import Orders from "../pages/Orders";
+import CreateOrder from "../pages/CreateOrder";
+import Clients from "../pages/Clients";
+import Settings from "../pages/Settings";
 
 const MainLayout = () => {
   return (
     <IonTabs>
       <IonRouterOutlet>
-        <Route path="/dashboard/tab1" component={Tab1} />
-        <Route path="/dashboard/tab2" component={Tab2} />
-        <Route path="/dashboard/tab3" component={Tab3} />
-        <Redirect path="/dashboard" to="/dashboard/tab1" exact />
+        <Route path="/dashboard/orders" component={Orders} />
+        <Route path="/dashboard/create-order" component={CreateOrder} />
+        <Route path="/dashboard/clients" component={Clients} />
+        <Route path="/dashboard/settings" component={Settings} />
+        <Redirect path="/dashboard" to="/dashboard/orders" exact />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="tab1" href="/dashboard/tab1">
+        <IonTabButton tab="orders" href="/dashboard/orders">
           <IonIcon icon={triangle} />
-          <IonLabel>Tab 1</IonLabel>
+          <IonLabel>Pedidos</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/dashboard/tab2">
+        <IonTabButton tab="create-order" href="/dashboard/create-order">
           <IonIcon icon={ellipse} />
-          <IonLabel>Tab 2</IonLabel>
+          <IonLabel>Crear Pedido</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab3" href="/dashboard/tab3">
+        <IonTabButton tab="clients" href="/dashboard/clients">
           <IonIcon icon={square} />
-          <IonLabel>Tab 3</IonLabel>
+          <IonLabel>Clientes</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="settings" href="/dashboard/settings">
+          <IonIcon icon={square} />
+          <IonLabel>Ajustes</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonTabs>

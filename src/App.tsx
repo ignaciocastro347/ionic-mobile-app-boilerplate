@@ -31,7 +31,7 @@ import MainLayout from "./theme/MainLayout";
 setupIonicReact();
 
 const App: React.FC = () => {
-  const isAuthed = false;
+  const isAuthed = true;
 
   return (
     <IonApp>
