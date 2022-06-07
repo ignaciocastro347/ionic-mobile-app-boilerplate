@@ -6,16 +6,13 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
+import Header from "../components/Header";
 import "../styles/Tab2.css";
 
 const Tab2: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Tab 2</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title="Tab2" />
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
