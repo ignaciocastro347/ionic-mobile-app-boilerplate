@@ -19,10 +19,6 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-/* Theme variables */
-import "./theme/variables.css";
-/* Tailwind styles */
-import "./theme/tailwind.css";
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route } from "react-router";
 import Login from "./pages/Login";
@@ -31,7 +27,7 @@ import MainLayout from "./theme/MainLayout";
 setupIonicReact();
 
 const App: React.FC = () => {
-  const isAuthed = true;
+  const isAuthed = false;
 
   return (
     <IonApp>
