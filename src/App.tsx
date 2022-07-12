@@ -20,25 +20,30 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import { IonReactRouter } from "@ionic/react-router";
-import { Redirect, Route } from "react-router";
+import { Route } from "react-router";
 import Login from "./pages/Login";
 import MainLayout from "./theme/MainLayout";
+import Index from "./pages/Index";
+import { SessionProvider } from "./hooks/useSession";
+import { ToastProvider } from "./hooks/useToast";
 
 setupIonicReact();
 
 const App: React.FC = () => {
-  const isAuthed = false;
-
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Redirect path="/" to={isAuthed ? "/dashboard" : "/login"} exact />
-          <Route path="/dashboard" render={() => <MainLayout />} />
-          <Route path="/login" component={Login} />
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </IonApp>
+    <SessionProvider>
+      <ToastProvider>
+        <IonApp>
+          <IonReactRouter>
+            <IonRouterOutlet>
+              <Route path="/" component={Index} exact />
+              <Route path="/dashboard" render={() => <MainLayout />} />
+              <Route path="/login" component={Login} />
+            </IonRouterOutlet>
+          </IonReactRouter>
+        </IonApp>
+      </ToastProvider>
+    </SessionProvider>
   );
 };
 

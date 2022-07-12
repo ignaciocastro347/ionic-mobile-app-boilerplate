@@ -1,6 +1,7 @@
+import { PropsWithoutRef } from "react";
 import "../styles/components/button.css";
 
-interface ButtonProps {
+interface ButtonProps extends PropsWithoutRef<JSX.IntrinsicElements["button"]> {
   text: string;
   onClick?: () => void;
   type?: "submit" | "button";
@@ -14,6 +15,7 @@ const Button = ({
   type = "button",
   styleType = "primary",
   disabled,
+  ...rest
 }: ButtonProps) => {
   return (
     <button
@@ -21,6 +23,7 @@ const Button = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      {...rest}
     >
       {text.toUpperCase()}
     </button>
