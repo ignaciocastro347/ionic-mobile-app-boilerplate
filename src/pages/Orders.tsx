@@ -1,30 +1,17 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
+import Layout from "../components/Layout";
+import PageHeading from "../components/PageHeading";
+import { useSessionContext } from "../hooks/useSession";
 import "../styles/Tab1.css";
 
 const Tab1: React.FC = () => {
+  const { currentUser, currentToken } = useSessionContext();
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Pedidos</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Pedidos</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Pedidos page" />
-      </IonContent>
-    </IonPage>
+    <Layout>
+      <PageHeading title={currentUser?.nombre} subtitle="Good morning," />
+      <ExploreContainer name={currentUser?.email} />
+      {currentToken}
+    </Layout>
   );
 };
 
